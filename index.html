@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#121016">
+<link rel="manifest" href="manifest.json"><link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>My Gallery</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header>
+<button id="menuBtn" aria-label="Navigation">☰</button>
+<h1 id="title" tabindex="0">My Gallery</h1>
+<button id="searchBtn" aria-label="Search">🔍</button>
+<button id="setBtn" aria-label="Settings">⚙</button>
+</header>
+<div id="selBar" hidden><button id="selX" aria-label="Cancel selection">✕ Cancel</button><span id="selN" aria-live="polite"></span><button id="selAll">Select all</button><button id="selMove">Move to Private</button><button id="selShare">Share</button><button id="selDl">Download</button><button id="selDel">Delete</button></div>
+<input id="q" type="search" placeholder="Search" hidden aria-label="Search">
+<nav id="nav" hidden>
+<button data-v="all">All Media</button><button data-v="normal">Normal Gallery</button>
+<button data-v="vault">Private Vault</button><button data-v="notes">Text Notes</button>
+<button data-v="settings">Settings</button></nav>
+<main><div id="grid"></div>
+<div id="empty" hidden><p id="emptyT">Nothing here yet</p><button id="unlockBtn" hidden>Unlock vault</button></div></main>
+<div id="fabMenu" hidden>
+<button data-a="photo">Add Photos</button><button data-a="video">Add Videos</button><button data-a="note">Create Text Note</button></div>
+<button id="fab" aria-label="Add" aria-haspopup="true">+</button>
+<input id="fp" type="file" accept="image/*" multiple hidden><input id="fv" type="file" accept="video/*" multiple hidden>
+<div id="ctx" role="menu" hidden></div>
+<dialog id="viewer"><button id="vClose" aria-label="Close">✕</button><div id="vBody"></div></dialog>
+<dialog id="noteDlg"><h2>Note</h2>
+<input id="nTitle" placeholder="Title" maxlength="200"><textarea id="nText" placeholder="Write here (Telugu, English, any language)" rows="10"></textarea>
+<label id="nDestL">Save in <select id="nDest"><option value="n">Normal Gallery</option><option value="p">Private Vault</option></select></label>
+<div class="row"><button id="nCancel">Cancel</button><button id="nSave" class="pri">Save</button></div></dialog>
+<dialog id="pwDlg"><h2 id="pwT"></h2><p id="pwNote"></p>
+<input id="pw" type="password" autocomplete="off" placeholder="Password"><input id="pw2" type="password" autocomplete="off" placeholder="Confirm password">
+<button id="pwBio" hidden>Use fingerprint / device lock</button>
+<p id="pwErr" class="err"></p><div class="row"><button id="pwCancel">Cancel</button><button id="pwOk" class="pri">OK</button></div></dialog>
+<dialog id="setDlg"><h2>Settings</h2>
+<p>Everything stays on this device. Clearing browser/site data deletes your gallery and vault, and a forgotten vault password cannot be recovered.</p>
+<label>Auto-lock after <select id="lockMin"><option value="1">1 min</option><option value="2">2 min</option><option value="5">5 min</option><option value="10">10 min</option><option value="30">30 min</option></select> idle (also locks when app is hidden)</label>
+<p id="authInfo"></p><div class="row"><button id="bioBtn"></button><button id="cpBtn">Change passcode</button></div>
+<p id="store"></p><div class="row"><button id="lockNow">Lock vault now</button><button id="persist">Protect storage</button><button id="setClose" class="pri">Close</button></div></dialog>
+<dialog id="cpDlg"><h2>Change passcode</h2><input id="cpOld" type="password" autocomplete="off" placeholder="Current passcode"><input id="cpNew" type="password" autocomplete="off" placeholder="New passcode (8+ chars)"><input id="cpNew2" type="password" autocomplete="off" placeholder="Confirm new passcode">
+<p id="cpErr" class="err"></p><div class="row"><button id="cpCancel">Cancel</button><button id="cpOk" class="pri">Change</button></div></dialog>
+<dialog id="prog"><h2 id="progT"></h2><progress id="pbar" value="0" max="1"></progress><p id="progMsg"></p><div class="row"><button id="progOk" class="pri" hidden>Close</button></div></dialog>
+<div id="toast" role="status" aria-live="polite"></div>
+<script src="script.js"></script></body></html>
